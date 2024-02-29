@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LutryShop.ProductApi.Migrations
 {
     [DbContext(typeof(MySqlContext))]
-    [Migration("20240226224124_updateSeeding")]
-    partial class updateSeeding
+    [Migration("20240229204256_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
