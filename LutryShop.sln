@@ -7,9 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{AF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E8DD46F9-F947-48B7-9D1A-D04569048350}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LutryShop.Web", "LutryShop.Web\LutryShop.Web.csproj", "{7B240BDC-790B-43AE-B6F4-AA76964B6857}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.Web", "LutryShop.Web\LutryShop.Web.csproj", "{7B240BDC-790B-43AE-B6F4-AA76964B6857}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LutryShop.ProductApi", "LutryShop.ProductApi\LutryShop.ProductApi.csproj", "{91604F64-A56D-47AB-AA40-73359DB12826}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.ProductApi", "LutryShop.ProductApi\LutryShop.ProductApi.csproj", "{91604F64-A56D-47AB-AA40-73359DB12826}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LutryShop.IdentityServer", "LutryShop.IdentityServer\LutryShop.IdentityServer.csproj", "{6D6702D0-81FC-475C-9724-36F94B4A7F5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{91604F64-A56D-47AB-AA40-73359DB12826}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91604F64-A56D-47AB-AA40-73359DB12826}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91604F64-A56D-47AB-AA40-73359DB12826}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D6702D0-81FC-475C-9724-36F94B4A7F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D6702D0-81FC-475C-9724-36F94B4A7F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D6702D0-81FC-475C-9724-36F94B4A7F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D6702D0-81FC-475C-9724-36F94B4A7F5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{7B240BDC-790B-43AE-B6F4-AA76964B6857} = {AF805351-689A-4D72-A571-D5C5347FD148}
 		{91604F64-A56D-47AB-AA40-73359DB12826} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
+		{6D6702D0-81FC-475C-9724-36F94B4A7F5B} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7EA6C7E8-4FC2-4001-BAC0-7812E51EAA82}
