@@ -1,11 +1,14 @@
 using LutryShop.ProductApi.Data.ValueObjects;
 using LutryShop.ProductApi.Repositories;
+using LutryShop.ProductApi.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LutryShop.ProductApi.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
@@ -48,6 +51,7 @@ namespace LutryShop.ProductApi.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = Role.Admin)]
         public async Task<ActionResult<bool>> Delete(long id)
         {
             var result = await _productRepository.Delete(id);

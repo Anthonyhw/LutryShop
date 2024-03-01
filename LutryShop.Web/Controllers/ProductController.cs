@@ -1,9 +1,12 @@
 ﻿using LutryShop.Web.Models;
 using LutryShop.Web.Services.IServices;
+using LutryShop.Web.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LutryShop.Web.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -60,6 +63,7 @@ namespace LutryShop.Web.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = Role.Admin)]
         public async Task<IActionResult> ProductDelete(ProductModel model)
         {
             var response = await _productService.Delete(model.Id);

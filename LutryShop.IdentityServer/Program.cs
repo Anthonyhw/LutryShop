@@ -1,5 +1,6 @@
 using LutryShop.IdentityServer.Configuration;
 using LutryShop.IdentityServer.Context;
+using LutryShop.IdentityServer.Initializer;
 using LutryShop.IdentityServer.Model;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,8 @@ var b = builder.Services.AddIdentityServer(opt =>
   .AddInMemoryClients(IdentityConfiguration.Clients)
   .AddAspNetIdentity<ApplicationUser>();
 
+builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+
 b.AddDeveloperSigningCredential();
 
 var app = builder.Build();
@@ -49,6 +52,10 @@ app.UseRouting();
 app.UseIdentityServer();
 
 app.UseAuthorization();
+
+
+var initializer = app.Services.CreateScope().ServiceProvider.GetRequiredService<IDbInitializer>();
+initializer.Initialize();
 
 app.MapControllerRoute(
     name: "default",
