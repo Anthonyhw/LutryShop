@@ -13,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 builder.Services.AddAuthentication("Bearer")
-    .AddJwtBearer(opt =>
+    .AddJwtBearer("Bearer", opt =>
     {
         opt.Authority = builder.Configuration["ServiceUrls:IdentityServer"];
         opt.TokenValidationParameters = new TokenValidationParameters { ValidateAudience = false };
