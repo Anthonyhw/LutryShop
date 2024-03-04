@@ -1,7 +1,9 @@
+using Duende.IdentityServer.Services;
 using LutryShop.IdentityServer.Configuration;
 using LutryShop.IdentityServer.Context;
 using LutryShop.IdentityServer.Initializer;
 using LutryShop.IdentityServer.Model;
+using LutryShop.IdentityServer.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,7 +32,8 @@ var b = builder.Services.AddIdentityServer(opt =>
   .AddInMemoryClients(IdentityConfiguration.Clients)
   .AddAspNetIdentity<ApplicationUser>();
 
-builder.Services.AddScoped<IDbInitializer, DbInitializer>();
+builder.Services.AddScoped<IDbInitializer, DbInitializer>()
+    .AddScoped<IProfileService, ProfileService>();
 
 b.AddDeveloperSigningCredential();
 
@@ -45,6 +48,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();

@@ -22,14 +22,16 @@ builder.Services.AddAuthentication(opt =>
         opt.ClaimActions.MapJsonKey("role","role", "role");
         opt.ClaimActions.MapJsonKey("sub","sub", "sub");
         opt.TokenValidationParameters.NameClaimType = "name";
-        opt.TokenValidationParameters.RoleClaimType= "role";
+        opt.TokenValidationParameters.RoleClaimType = "role";
         opt.Scope.Add("lutry_shop");
         opt.SaveTokens = true;
     });
 
+
+
 builder.Services.AddHttpClient<IProductService, ProductService>(c =>
 {
-    c.BaseAddress = new Uri(builder.Configuration["ServiceUrls:ProductAPI"]);
+    c.BaseAddress = new Uri("https://localhost:4440");
 });
 
 var app = builder.Build();
@@ -41,6 +43,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();

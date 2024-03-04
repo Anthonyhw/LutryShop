@@ -4,10 +4,10 @@ namespace LutryShop.Web.Services.IServices
 {
     public interface IProductService
     {
-        Task<IEnumerable<ProductModel>> FindAll();
-        Task<ProductModel> FindById(long id);
-        Task<ProductModel> Create(ProductModel product);
-        Task<ProductModel> Update(ProductModel product);
-        Task<bool> Delete(long id);
+        Task<IEnumerable<ProductModel>> FindAll(string token);
+        Task<ProductModel> FindById(long id, string token);
+        Task<ProductModel> Create(ProductModel product, string token);
+        Task<ProductModel> Update(ProductModel product, string token);
+        Task<bool> Delete(long id, string token);
     }
 }

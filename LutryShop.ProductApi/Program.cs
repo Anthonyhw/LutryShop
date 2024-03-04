@@ -15,16 +15,19 @@ builder.Services.AddControllers();
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", opt =>
     {
+        opt.IncludeErrorDetails = true;
         opt.Authority = builder.Configuration["ServiceUrls:IdentityServer"];
-        opt.TokenValidationParameters = new TokenValidationParameters { ValidateAudience = false };
+        //opt.TokenValidationParameters = new TokenValidationParameters { ValidateAudience = false };
+        opt.TokenValidationParameters.ValidateAudience = false;
+        opt.TokenValidationParameters.ValidTypes = new[] { "at+jwt" };
     });
 
-builder.Services.AddAuthorizationCore(opt =>
+builder.Services.AddAuthorization(opt =>
 {
     opt.AddPolicy("ApiScope", policy =>
     {
         policy.RequireAuthenticatedUser();
-        policy.RequireClaim("scope", "truly_shop");
+        policy.RequireClaim("scope", "lutry_shop");
     });
 });
 
@@ -53,6 +56,7 @@ builder.Services.AddSwaggerGen(c =>
                     Id="Bearer"
                 },
                 Scheme="oauth2",
+                Name="Bearer",
                 In= ParameterLocation.Header
             },
             new List<string>()
@@ -80,12 +84,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapControllers();
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
 
 app.UseAuthorization();
-
-app.MapControllers();
 
 app.Run();
