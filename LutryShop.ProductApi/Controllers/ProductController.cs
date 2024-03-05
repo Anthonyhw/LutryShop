@@ -19,6 +19,7 @@ namespace LutryShop.ProductApi.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<ProductVO>>> FindAll() 
         {
             var products = await _productRepository.FindAll();
