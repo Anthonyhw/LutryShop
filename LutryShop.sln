@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.Web", "LutryShop.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.ProductApi", "LutryShop.ProductApi\LutryShop.ProductApi.csproj", "{91604F64-A56D-47AB-AA40-73359DB12826}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LutryShop.IdentityServer", "LutryShop.IdentityServer\LutryShop.IdentityServer.csproj", "{6D6702D0-81FC-475C-9724-36F94B4A7F5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.IdentityServer", "LutryShop.IdentityServer\LutryShop.IdentityServer.csproj", "{6D6702D0-81FC-475C-9724-36F94B4A7F5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LutryShop.CartApi", "LutryShop.CartApi\LutryShop.CartApi.csproj", "{C1172CEE-233B-473F-B9DD-692095B7129F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{6D6702D0-81FC-475C-9724-36F94B4A7F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D6702D0-81FC-475C-9724-36F94B4A7F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D6702D0-81FC-475C-9724-36F94B4A7F5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1172CEE-233B-473F-B9DD-692095B7129F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1172CEE-233B-473F-B9DD-692095B7129F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1172CEE-233B-473F-B9DD-692095B7129F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1172CEE-233B-473F-B9DD-692095B7129F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{7B240BDC-790B-43AE-B6F4-AA76964B6857} = {AF805351-689A-4D72-A571-D5C5347FD148}
 		{91604F64-A56D-47AB-AA40-73359DB12826} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
 		{6D6702D0-81FC-475C-9724-36F94B4A7F5B} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
+		{C1172CEE-233B-473F-B9DD-692095B7129F} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7EA6C7E8-4FC2-4001-BAC0-7812E51EAA82}
