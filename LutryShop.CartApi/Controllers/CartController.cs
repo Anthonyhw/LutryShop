@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LutryShop.CartApi.Controllers
 {
     [ApiController]
-    [Route("ap/v1/[controller]")]
+    [Route("api/v1/[controller]")]
     public class CartController : ControllerBase
     {
         private readonly ICartRepository _cartRepository;

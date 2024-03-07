@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LutryShop.CartApi.Data.ValueObjects
 {
-    public class CartDetailVO: BaseEntity
+    public class CartDetailVO
     {
         public long Id { get; set; }
 

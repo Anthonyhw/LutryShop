@@ -68,6 +68,7 @@ namespace LutryShop.CartApi.Repositories
                     mappedCart.CartDetails.FirstOrDefault().Count += cartDetail.Count;
                     mappedCart.CartDetails.FirstOrDefault().Id = cartDetail.Id;
                     mappedCart.CartDetails.FirstOrDefault().CartHeaderId = cartDetail.CartHeaderId;
+                    _context.CartDetails.Update(mappedCart.CartDetails.FirstOrDefault());
                     await _context.SaveChangesAsync();
                 }
             }
