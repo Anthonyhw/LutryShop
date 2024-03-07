@@ -52,10 +52,12 @@ namespace LutryShop.CartApi.Repositories
                 await _context.SaveChangesAsync();
             }else
             {
-                var cartDetail = await _context.CartDetails.AsNoTracking().FirstOrDefaultAsync(p => p.ProductId == cart.CartDetails.FirstOrDefault().ProductId && p.CartHeaderId == cartHeader.Id);
+                var cartDetail = await _context.CartDetails.AsNoTracking().FirstOrDefaultAsync(
+                    p => p.ProductId == mappedCart.CartDetails.FirstOrDefault().ProductId && 
+                p.CartHeaderId == cartHeader.Id);
                 if (cartDetail == null)
                 {
-                    mappedCart.CartDetails.FirstOrDefault().CartHeaderId = mappedCart.CartHeader.Id;
+                    mappedCart.CartDetails.FirstOrDefault().CartHeaderId = cartHeader.Id;
                     mappedCart.CartDetails.FirstOrDefault().Product = null;
                     _context.CartDetails.Add(mappedCart.CartDetails.FirstOrDefault());
                     await _context.SaveChangesAsync();
