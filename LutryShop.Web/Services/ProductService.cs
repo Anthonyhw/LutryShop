@@ -16,33 +16,33 @@ namespace LutryShop.Web.Services
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         }
 
-        public async Task<IEnumerable<ProductModel>> FindAll(string token)
+        public async Task<IEnumerable<ProductViewModel>> FindAll(string token)
         {
             _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
             var response = await _httpClient.GetAsync(url);
-            return await response.ReadContentAsync<List<ProductModel>>();
+            return await response.ReadContentAsync<List<ProductViewModel>>();
         }
 
-        public async Task<ProductModel> FindById(long id, string token)
+        public async Task<ProductViewModel> FindById(long id, string token)
         {
             _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
             var response = await _httpClient.GetAsync($"{url}/{id}");
-            return await response.ReadContentAsync<ProductModel>();
+            return await response.ReadContentAsync<ProductViewModel>();
         }
 
-        public async Task<ProductModel> Create(ProductModel product, string token   )
+        public async Task<ProductViewModel> Create(ProductViewModel product, string token   )
         {
             _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
             var response = await _httpClient.PostAsJson(url, product);
-            if (response.IsSuccessStatusCode) return await response.ReadContentAsync<ProductModel>();
+            if (response.IsSuccessStatusCode) return await response.ReadContentAsync<ProductViewModel>();
             else throw new Exception("Something went wrong when calling the API.");
         }
 
-        public async Task<ProductModel> Update(ProductModel product, string token)
+        public async Task<ProductViewModel> Update(ProductViewModel product, string token)
         {
             _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
             var response = await _httpClient.PutAsJson(url, product);
-            if (response.IsSuccessStatusCode) return await response.ReadContentAsync<ProductModel>();
+            if (response.IsSuccessStatusCode) return await response.ReadContentAsync<ProductViewModel>();
             else throw new Exception("Something went wrong when calling the API.");
         }
 
