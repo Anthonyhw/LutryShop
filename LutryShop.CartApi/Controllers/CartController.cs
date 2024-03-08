@@ -19,7 +19,7 @@ namespace LutryShop.CartApi.Controllers
         [HttpGet("find-cart/{id}")]
         public async Task<ActionResult<CartVO>> FindById(string id) 
         {
-            var cart = _cartRepository.FindCartByUserId(id);
+            var cart = await _cartRepository.FindCartByUserId(id);
             if (cart == null) return NotFound();
             return Ok(cart);
         }
