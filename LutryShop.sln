@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.ProductApi", "Lut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.IdentityServer", "LutryShop.IdentityServer\LutryShop.IdentityServer.csproj", "{6D6702D0-81FC-475C-9724-36F94B4A7F5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LutryShop.CartApi", "LutryShop.CartApi\LutryShop.CartApi.csproj", "{C1172CEE-233B-473F-B9DD-692095B7129F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.CartApi", "LutryShop.CartApi\LutryShop.CartApi.csproj", "{C1172CEE-233B-473F-B9DD-692095B7129F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LutryShop.CouponApi", "LutryShop.CouponApi\LutryShop.CouponApi.csproj", "{28B64CC7-FF87-4E02-9ACF-10CE47C4C84F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{C1172CEE-233B-473F-B9DD-692095B7129F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1172CEE-233B-473F-B9DD-692095B7129F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1172CEE-233B-473F-B9DD-692095B7129F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28B64CC7-FF87-4E02-9ACF-10CE47C4C84F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28B64CC7-FF87-4E02-9ACF-10CE47C4C84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28B64CC7-FF87-4E02-9ACF-10CE47C4C84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28B64CC7-FF87-4E02-9ACF-10CE47C4C84F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{91604F64-A56D-47AB-AA40-73359DB12826} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
 		{6D6702D0-81FC-475C-9724-36F94B4A7F5B} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
 		{C1172CEE-233B-473F-B9DD-692095B7129F} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
+		{28B64CC7-FF87-4E02-9ACF-10CE47C4C84F} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7EA6C7E8-4FC2-4001-BAC0-7812E51EAA82}
