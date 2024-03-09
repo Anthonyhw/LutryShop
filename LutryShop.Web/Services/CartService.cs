@@ -48,14 +48,20 @@ namespace LutryShop.Web.Services
             else throw new Exception("Something went wrong when calling the API.");
         }
 
-        public async Task<bool> ApplyCoupon(CartViewModel cart, string couponCode, string token)
+        public async Task<bool> ApplyCoupon(CartViewModel cart, string token)
         {
-            throw new NotImplementedException();
+            _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+            var response = await _httpClient.PostAsJson($"{url}/apply-coupon", cart);
+            if (response.IsSuccessStatusCode) return await response.ReadContentAsync<bool>();
+            else throw new Exception("Something went wrong when calling the API.");
         }
 
         public async Task<bool> RemoveCoupon(string userId, string token)
         {
-            throw new NotImplementedException();
+            _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+            var response = await _httpClient.DeleteAsync($"{url}/remove-coupon/{userId}");
+            if (response.IsSuccessStatusCode) return await response.ReadContentAsync<bool>();
+            else throw new Exception("Something went wrong when calling the API.");
         }
 
         public async Task<bool> ClearCart(string userId, string token)

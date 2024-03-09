@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LutryShop.CouponApi.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class CouponController : ControllerBase
     {
         private readonly ICouponRepository _couponRepository;
