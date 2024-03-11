@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.IdentityServer", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.CartApi", "LutryShop.CartApi\LutryShop.CartApi.csproj", "{C1172CEE-233B-473F-B9DD-692095B7129F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LutryShop.CouponApi", "LutryShop.CouponApi\LutryShop.CouponApi.csproj", "{28B64CC7-FF87-4E02-9ACF-10CE47C4C84F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.CouponApi", "LutryShop.CouponApi\LutryShop.CouponApi.csproj", "{28B64CC7-FF87-4E02-9ACF-10CE47C4C84F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{B1D9B3FD-D2EE-4A2C-B374-C22F35BF84B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LutryShop.MessageBus", "LutryShop.MessageBus\LutryShop.MessageBus.csproj", "{A90FDABD-CD8F-4D41-B754-EA6EBD9CE41B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +47,10 @@ Global
 		{28B64CC7-FF87-4E02-9ACF-10CE47C4C84F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28B64CC7-FF87-4E02-9ACF-10CE47C4C84F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28B64CC7-FF87-4E02-9ACF-10CE47C4C84F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A90FDABD-CD8F-4D41-B754-EA6EBD9CE41B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A90FDABD-CD8F-4D41-B754-EA6EBD9CE41B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A90FDABD-CD8F-4D41-B754-EA6EBD9CE41B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A90FDABD-CD8F-4D41-B754-EA6EBD9CE41B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +61,7 @@ Global
 		{6D6702D0-81FC-475C-9724-36F94B4A7F5B} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
 		{C1172CEE-233B-473F-B9DD-692095B7129F} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
 		{28B64CC7-FF87-4E02-9ACF-10CE47C4C84F} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
+		{A90FDABD-CD8F-4D41-B754-EA6EBD9CE41B} = {B1D9B3FD-D2EE-4A2C-B374-C22F35BF84B9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7EA6C7E8-4FC2-4001-BAC0-7812E51EAA82}

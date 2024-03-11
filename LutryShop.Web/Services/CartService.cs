@@ -69,9 +69,12 @@ namespace LutryShop.Web.Services
             throw new NotImplementedException();
         }
 
-        public async Task<CartViewModel> Checkout(CartHeaderViewModel cartHeader, string token)
+        public async Task<CartHeaderViewModel> Checkout(CartHeaderViewModel cartHeader, string token)
         {
-            throw new NotImplementedException();
+            _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+            var response = await _httpClient.PostAsJson($"{url}/checkout", cartHeader);
+            if (response.IsSuccessStatusCode) return await response.ReadContentAsync<CartHeaderViewModel>();
+            else throw new Exception("Something went wrong when calling the API.");
         }
     }
 }

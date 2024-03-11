@@ -1,4 +1,6 @@
 using LutryShop.CartApi.Data.ValueObjects;
+using LutryShop.CartApi.Messages;
+using LutryShop.CartApi.RabbitMQSender;
 using LutryShop.CartApi.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +12,12 @@ namespace LutryShop.CartApi.Controllers
     public class CartController : ControllerBase
     {
         private readonly ICartRepository _cartRepository;
+        private readonly IRabbitMQMessageSender _rabbitMQMessageSender;
 
-        public CartController(ICartRepository cartRepository)
+        public CartController(ICartRepository cartRepository, IRabbitMQMessageSender rabbitMQMessageSender)
         {
             _cartRepository = cartRepository;
+            _rabbitMQMessageSender = rabbitMQMessageSender;
         }
 
         [HttpGet("find-cart/{id}")]
@@ -62,6 +66,20 @@ namespace LutryShop.CartApi.Controllers
             var status = await _cartRepository.RemoveCoupon(userId);
             if (!status) return BadRequest();
             return Ok(status);
+        }
+        [HttpPost("checkout")]
+        public async Task<ActionResult<CheckoutHeaderVO>> Checkout(CheckoutHeaderVO vo)
+        {
+            if (vo?.UserId == null) return BadRequest();
+
+            var cart = await _cartRepository.FindCartByUserId(vo.UserId);
+            if (cart == null) return NotFound();
+            vo.CartDetails = cart.CartDetails;
+            vo.Time = DateTime.Now;
+
+            _rabbitMQMessageSender.Send(vo, "checkout-queue");
+
+            return Ok(vo);
         }
     }
 }
