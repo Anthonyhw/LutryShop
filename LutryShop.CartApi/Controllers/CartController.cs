@@ -12,12 +12,14 @@ namespace LutryShop.CartApi.Controllers
     public class CartController : ControllerBase
     {
         private readonly ICartRepository _cartRepository;
+        private readonly ICouponRepository _couponRepository;
         private readonly IRabbitMQMessageSender _rabbitMQMessageSender;
 
-        public CartController(ICartRepository cartRepository, IRabbitMQMessageSender rabbitMQMessageSender)
+        public CartController(ICartRepository cartRepository, IRabbitMQMessageSender rabbitMQMessageSender, ICouponRepository couponRepository)
         {
             _cartRepository = cartRepository;
             _rabbitMQMessageSender = rabbitMQMessageSender;
+            _couponRepository = couponRepository;
         }
 
         [HttpGet("find-cart/{id}")]
@@ -74,6 +76,13 @@ namespace LutryShop.CartApi.Controllers
 
             var cart = await _cartRepository.FindCartByUserId(vo.UserId);
             if (cart == null) return NotFound();
+
+            if (!string.IsNullOrEmpty(vo.CouponCode)) {
+                string token = Request.Headers["Authorization"];
+                CouponVO coupon = await _couponRepository.GetCouponByCode(vo.CouponCode, token);
+                if (vo.DiscountAmount != coupon.DiscountAmount) return StatusCode(412);
+            } 
+
             vo.CartDetails = cart.CartDetails;
             vo.Time = DateTime.Now;
 

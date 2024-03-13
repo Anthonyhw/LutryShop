@@ -69,11 +69,12 @@ namespace LutryShop.Web.Services
             throw new NotImplementedException();
         }
 
-        public async Task<CartHeaderViewModel> Checkout(CartHeaderViewModel cartHeader, string token)
+        public async Task<object> Checkout(CartHeaderViewModel cartHeader, string token)
         {
             _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
             var response = await _httpClient.PostAsJson($"{url}/checkout", cartHeader);
             if (response.IsSuccessStatusCode) return await response.ReadContentAsync<CartHeaderViewModel>();
+            else if (response.StatusCode.ToString().Equals("PreconditionFailed")) return "Coupon Price has changed, please confirm!";
             else throw new Exception("Something went wrong when calling the API.");
         }
     }
