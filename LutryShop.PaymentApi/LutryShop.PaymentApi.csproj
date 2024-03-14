@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
- <ItemGroup>
+	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.27" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.27">
 			<PrivateAssets>all</PrivateAssets>
@@ -18,13 +18,12 @@
 		<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
 	</ItemGroup>
-
 	<ItemGroup>
 		<ProjectReference Include="..\LutryShop.MessageBus\LutryShop.MessageBus.csproj" />
+		<ProjectReference Include="..\LutryShop.PaymentProcessor\LutryShop.PaymentProcessor.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Controllers\" />
-	</ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
 
 </Project>

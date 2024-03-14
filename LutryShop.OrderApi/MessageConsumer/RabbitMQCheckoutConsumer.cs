@@ -1,6 +1,7 @@
 ﻿
 using LutryShop.OrderApi.Messages;
 using LutryShop.OrderApi.Models;
+using LutryShop.OrderApi.RabbitMQSender;
 using LutryShop.OrderApi.Repositories;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -14,10 +15,12 @@ namespace LutryShop.OrderApi.MessageConsumer
         private readonly OrderRepository _repository;
         private IConnection _connection;
         private IModel _channel;
+        private IRabbitMQMessageSender _messageSender;
 
-        public RabbitMQCheckoutConsumer(OrderRepository repository)
+        public RabbitMQCheckoutConsumer(OrderRepository repository, IRabbitMQMessageSender messageSender)
         {
             _repository = repository;
+            _messageSender = messageSender;
             var factory = new ConnectionFactory
             {
                 HostName = "localhost",
@@ -79,6 +82,26 @@ namespace LutryShop.OrderApi.MessageConsumer
             }
 
             await _repository.AddOrder(order);
+
+            PaymentVO payment = new()
+            {
+                Name = order.FirstName + " " + order.LastName,
+                CardNumber = order.CardNumber,
+                CVV = order.CVV,
+                ExpiryMonthYear = order.ExpiryMonthYear,
+                OrderId = order.Id,
+                PurchaseAmount = order.PurchaseAmount,
+                Email = order.Email,
+            };
+
+            try
+            {
+                _messageSender.Send(payment, "order-payment-process-queue");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
     }
 }

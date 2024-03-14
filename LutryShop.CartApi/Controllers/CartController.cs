@@ -88,6 +88,7 @@ namespace LutryShop.CartApi.Controllers
 
             _rabbitMQMessageSender.Send(vo, "checkout-queue");
 
+            await _cartRepository.ClearCart(vo.UserId);
             return Ok(vo);
         }
     }

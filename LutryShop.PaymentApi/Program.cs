@@ -1,13 +1,15 @@
-using LutryShop.OrderApi.Context;
-using LutryShop.OrderApi.MessageConsumer;
-using LutryShop.OrderApi.RabbitMQSender;
-using LutryShop.OrderApi.Repositories;
-using Microsoft.EntityFrameworkCore;
+using LutryShop.PaymentApi.MessageConsumer;
+using LutryShop.PaymentApi.RabbitMQSender;
+using LutryShop.PaymentProcessor;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddHostedService<RabbitMQPaymentConsumer>();
+builder.Services.AddSingleton<IProcessPayment, ProcessPayment>();
+builder.Services.AddSingleton<IRabbitMQMessageSender, RabbitMQMessageSender>();
 
 builder.Services.AddControllers();
 builder.Services.AddAuthentication("Bearer")
@@ -34,7 +36,6 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(c =>
 {
-    c.EnableAnnotations();
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = @"Enter 'Bearer' [space] and your token!",
@@ -61,19 +62,6 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
-
-builder.Services.AddDbContext<MySqlContext>(
-    opt => opt.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-    new MySqlServerVersion(new Version())));
-
-var b = new DbContextOptionsBuilder<MySqlContext>();
-b.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-    new MySqlServerVersion(new Version()));
-
-builder.Services.AddSingleton(new OrderRepository(b.Options));
-builder.Services.AddHostedService<RabbitMQCheckoutConsumer>();
-builder.Services.AddHostedService<RabbitMQPaymentConsumer>();
-builder.Services.AddSingleton<IRabbitMQMessageSender, RabbitMQMessageSender>();
 
 var app = builder.Build();
 

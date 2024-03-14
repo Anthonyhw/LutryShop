@@ -28,7 +28,7 @@ namespace LutryShop.OrderApi.Repositories
             await using var _db = new MySqlContext(_context);
             var header = await _db.OrderHeaders.FirstOrDefaultAsync(o => o.Id == orderHeaderId);
 
-            if (header == null)
+            if (header != null)
             {
                 header.PaymentStatus = status;
                 await _db.SaveChangesAsync();

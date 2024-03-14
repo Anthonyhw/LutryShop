@@ -1,10 +1,10 @@
-﻿using LutryShop.CartApi.Messages;
-using LutryShop.MessageBus;
+﻿using LutryShop.MessageBus;
+using LutryShop.PaymentApi.Messages;
 using RabbitMQ.Client;
 using System.Text;
 using System.Text.Json;
 
-namespace LutryShop.CartApi.RabbitMQSender
+namespace LutryShop.PaymentApi.RabbitMQSender
 {
     public class RabbitMQMessageSender : IRabbitMQMessageSender
     {
@@ -41,7 +41,7 @@ namespace LutryShop.CartApi.RabbitMQSender
                 WriteIndented = true,
             };
 
-            var json = JsonSerializer.Serialize<CheckoutHeaderVO>((CheckoutHeaderVO)message, options);
+            var json = JsonSerializer.Serialize<UpdatePaymentResultMessage>((UpdatePaymentResultMessage)message, options);
             return Encoding.UTF8.GetBytes(json);
         }
 
