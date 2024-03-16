@@ -59,7 +59,7 @@ namespace LutryShop.PaymentApi.MessageConsumer
 
             try
             {
-                _rabbitMQMessageSender.Send(paymentResult, "order-payment-result-queue");
+                _rabbitMQMessageSender.Send(paymentResult);
             }
             catch (Exception)
             {

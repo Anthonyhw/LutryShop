@@ -12,6 +12,9 @@ namespace LutryShop.PaymentApi.RabbitMQSender
         private readonly string _username;
         private readonly string _password;
         private IConnection _connection;
+        private const string Exchange = "DirectPaymentUpdateExchange";
+        private const string PaymentEmailUpdateQueueName = "PaymentEmailUpdateQueueName";
+        private const string PaymentOrderUpdateQueueName = "PaymentEmailOrderQueueName";
 
         public RabbitMQMessageSender()
         {
@@ -19,17 +22,22 @@ namespace LutryShop.PaymentApi.RabbitMQSender
             _username = "guest";
             _password = "guest";
         }
-        public void Send(BaseMessage message, string queueName)
+        public void Send(BaseMessage message)
         {
             if (ConnectionExists())
             {
                 using var channel = _connection.CreateModel();
 
-                channel.QueueDeclare(queueName, false, false, false, null);
+                channel.ExchangeDeclare(Exchange, ExchangeType.Direct, false);
+                channel.QueueDeclare(PaymentEmailUpdateQueueName, false, false, false, null);
+                channel.QueueDeclare(PaymentOrderUpdateQueueName, false, false, false, null);
+                channel.QueueBind(PaymentEmailUpdateQueueName, Exchange, "PaymentEmail");
+                channel.QueueBind(PaymentOrderUpdateQueueName, Exchange, "PaymentOrder");
 
                 byte[] body = GetMessageAsByteArray(message);
 
-                channel.BasicPublish("", queueName, null, body);
+                channel.BasicPublish(Exchange, "PaymentEmail", null, body);
+                channel.BasicPublish(Exchange, "PaymentOrder", null, body);
             }
 
         }

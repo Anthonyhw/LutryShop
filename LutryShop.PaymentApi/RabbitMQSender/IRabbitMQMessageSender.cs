@@ -4,6 +4,6 @@ namespace LutryShop.PaymentApi.RabbitMQSender
 {
     public interface IRabbitMQMessageSender
     {
-        void Send(BaseMessage message, string queueName);
+        void Send(BaseMessage message);
     }
 }

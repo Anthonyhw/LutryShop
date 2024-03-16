@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.OrderApi", "Lutry
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Payments", "Payments", "{1318E50A-6374-4E47-8A95-29F2CDE76AA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LutryShop.PaymentProcessor", "LutryShop.PaymentProcessor\LutryShop.PaymentProcessor.csproj", "{9EBA105C-A214-43C6-8CC8-3177A36217F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.PaymentProcessor", "LutryShop.PaymentProcessor\LutryShop.PaymentProcessor.csproj", "{9EBA105C-A214-43C6-8CC8-3177A36217F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LutryShop.PaymentApi", "LutryShop.PaymentApi\LutryShop.PaymentApi.csproj", "{E703D9C1-FADB-4E3D-B3B9-25517B22126B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LutryShop.PaymentApi", "LutryShop.PaymentApi\LutryShop.PaymentApi.csproj", "{E703D9C1-FADB-4E3D-B3B9-25517B22126B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LutryShop.Email", "LutryShop.Email\LutryShop.Email.csproj", "{C2FFE3D7-B0B6-4588-A8F1-6B47ADCF6F68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,10 @@ Global
 		{E703D9C1-FADB-4E3D-B3B9-25517B22126B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E703D9C1-FADB-4E3D-B3B9-25517B22126B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E703D9C1-FADB-4E3D-B3B9-25517B22126B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2FFE3D7-B0B6-4588-A8F1-6B47ADCF6F68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2FFE3D7-B0B6-4588-A8F1-6B47ADCF6F68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2FFE3D7-B0B6-4588-A8F1-6B47ADCF6F68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2FFE3D7-B0B6-4588-A8F1-6B47ADCF6F68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +91,7 @@ Global
 		{A0F7EBBD-05B6-4DC7-80CF-BE78EF57B99B} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
 		{9EBA105C-A214-43C6-8CC8-3177A36217F0} = {1318E50A-6374-4E47-8A95-29F2CDE76AA9}
 		{E703D9C1-FADB-4E3D-B3B9-25517B22126B} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
+		{C2FFE3D7-B0B6-4588-A8F1-6B47ADCF6F68} = {E8DD46F9-F947-48B7-9D1A-D04569048350}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7EA6C7E8-4FC2-4001-BAC0-7812E51EAA82}
