@@ -26,7 +26,7 @@ namespace LutryShop.Web.Services
 
         public async Task<CartViewModel> AddItemToCart(CartViewModel cart, string token)
         {
-            //_httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
+            _httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token}");
             var response = await _httpClient.PostAsJson($"{url}/add-cart", cart);
             if (response.IsSuccessStatusCode) return await response.ReadContentAsync<CartViewModel>();
             else throw new Exception("Something went wrong when calling the API.");
